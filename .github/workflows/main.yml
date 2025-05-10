@@ -1,0 +1,35 @@
+name: just checking the values
+
+on:
+  workflow_dispatch:
+    inputs:
+      Environment:
+        type: choice
+        description: 'Select environment'
+        options:
+          - dev
+          - preprod
+
+permissions:
+  id-token: write
+  contents: read
+  packages: read
+  actions: read
+  security-events: write
+
+jobs:
+  get-json-values:
+    runs-on: ubuntu-latest
+
+    outputs:
+      environment: ${{ steps.fetch-values.outputs.environment }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Fetch values from JSON
+        id: fetch-values
+        run: |
+          json_data=$(cat cicd/config.json)
+          echo "environment=$(echo \"$json_data\" | jq -r '.environment')" >> "$GITHUB_OUTPUT"
