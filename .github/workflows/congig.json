@@ -1,0 +1,6 @@
+{
+    "environment" : "dev",
+    "build_code" : "true",
+    "deployment" : "true"
+
+ }
