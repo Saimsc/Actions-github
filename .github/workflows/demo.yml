@@ -1,5 +1,26 @@
-name: Run shell commands
-on: [push]
+# name: Run shell commands
+# on: [push]
+
+# jobs:
+#  run-shell-command:
+#   runs-on: ubuntu-latest
+#   steps:
+#   - name: Echo a string
+#     run: echo "Hello this is a first job"
+
+
+name: Platform BUILD
+
+on:
+  workflow_dispatch:
+    inputs:
+      Environment:
+         type: choice
+         description: 'select emvironment'
+         options:
+         - dev
+         - preprod
+
 
 jobs:
  run-shell-command:
