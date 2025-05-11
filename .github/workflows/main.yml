@@ -33,3 +33,13 @@ jobs:
         run: |
           json_data=$(cat cicd/config.json)
           echo "environment=$(echo \"$json_data\" | jq -r '.environment')" >> "$GITHUB_OUTPUT"
+
+  run-cicd:
+    uses: Saimsc/cd-template/.github/workflows/cd-main.yml@main
+    needs: get-json-values
+
+    with:
+      environment: "${{needs.get-json-values.outputs.environment}}"
+
+
+
