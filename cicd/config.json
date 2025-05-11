@@ -1,7 +1,6 @@
 {
     "environment" : "dev",
     "build_code" : "true",
-    "deployment" : "true",
-    "build_docker": "false",
+    "deployment" : "true"
 
  }
