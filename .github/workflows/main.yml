@@ -23,6 +23,8 @@ jobs:
 
     outputs:
       environment: ${{ steps.fetch-values.outputs.environment }}
+      deployment: ${{steps.fetch-values.outputs.deployment}}
+      build_codes: ${{steps.fetch-values.outputs.build_codes}}
 
     steps:
       - name: Checkout code
