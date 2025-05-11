@@ -33,7 +33,7 @@ jobs:
         run: |
           json_data=$(cat cicd/config.json)
           echo "environment=$(echo \"$json_data\" | jq -r '.environment')" >> "$GITHUB_OUTPUT"
-          environment: $(echo "$json_data" | jq -r '.environment)         
+          environment= $(echo "$json_data" | jq -r '.environment)         
           echo "build_codes=$(echo \"$json_data\" | jq -r '.build_code')" >> "$GITHUB_OUTPUT"
           echo "deployment=$(echo \"$json_data\" | jq -r '.deployment')" >> "$GITHUB_OUTPUT"
 
