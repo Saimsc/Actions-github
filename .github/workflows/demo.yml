@@ -45,5 +45,13 @@ jobs:
      curl -LO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
      chmod +x kubectl
      sudo mv kubectl /usr/local/bin/kubectl
-    
+  - name: Create KinD cluster
+    run: |
+         kind create cluster --name demo-cluster --wait 60s
+  - name: Get cluster nodes
+    run: |
+        kubectl get nodes
+  - name: Verify cluster info
+    run: |
+        kubectl cluster-info
     
