@@ -40,10 +40,10 @@ jobs:
   - name: Install kubectl
     run: |
      echo "Fetching latest kubectl version..."
-     curl -s https://dl.k8s.io/release/stable.txt
-     export KUBECTL_VERSION=$(curl -s https://dl.k8s.io/release/stable.txt)
+     export KUBECTL_VERSION=$(curl -sL https://dl.k8s.io/release/stable.txt)
      echo "Using kubectl version: $KUBECTL_VERSION"
      curl -LO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
      chmod +x kubectl
      sudo mv kubectl /usr/local/bin/kubectl
+    
     
