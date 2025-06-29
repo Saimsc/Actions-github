@@ -1,1 +1,39 @@
 
+name: Prime Number Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      number:
+        description: 'Enter a number to check if it is prime'
+        required: true
+
+jobs:
+  check-prime:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prime number check script (inline)
+        run: |
+          #!/bin/bash
+          
+          num=${{ github.event.inputs.number }}
+
+          if [ -z "$num" ]; then
+            echo "❌ No number provided"
+            exit 1
+          fi
+
+          if [ "$num" -lt 2 ]; then
+            echo "🔢 $num is not a prime number (less than 2)"
+            exit 0
+          fi
+
+          for ((i=2; i*i<=num; i++)); do
+            if [ $((num % i)) -eq 0 ]; then
+              echo "❌ $num is not a prime number (divisible by $i)"
+              exit 0
+            fi
+          done
+
+          echo "✅ $num is a prime number"
