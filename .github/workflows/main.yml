@@ -38,6 +38,7 @@ jobs:
           #environment= $(echo "$json_data" | jq -r '.environment')         
           echo "build_codes=$(echo "$json_data" | jq -r '.build_code')" >> $GITHUB_OUTPUT
           echo "deployment=$(echo "$json_data" | jq -r '.deployment')" >> $GITHUB_OUTPUT
+          echo "$json_data"
 
 
   run-cicd:
