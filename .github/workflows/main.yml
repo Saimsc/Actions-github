@@ -41,7 +41,7 @@ jobs:
 
 
   run-cicd:
-    uses: Saimsc/cd-template/.github/workflows/cd-main.yml@dev
+    uses: Saimsc/cd-template/.github/workflows/cd-main.yml@main
     needs: get-json-values
 
     with:
